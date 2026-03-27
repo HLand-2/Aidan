@@ -38,6 +38,19 @@ class AI:
                     print("Sorry, but I don't know any jokes.\n Please tell me some.")
                 else:
                     joke = random.choice(self.jokes)
-                    if joke[0] = "Knock Knock.":
+                    if joke[0] == "Knock Knock.":
+                        print(joke[0])
+                        input(joke[1] + "\n")
+                        print(joke[2])
+                        input(joke[2] + " who?\n")
+                        print(joke[3])
+        elif "how" in u and ("feel" in u or "emotion" in u):
+            for emotion, response in self.emotions.items():
+                print(f"  {emotion}: {response}")
+        elif "bye" in u or "goodbye" in u:
+            print("Goodbye! Have a great day!")
+        else:
+            print("I'm not sure how to respond to that. Can you try again?")
+
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
