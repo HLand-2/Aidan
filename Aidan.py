@@ -13,6 +13,7 @@ class AI:
         self.jokes = self.knowledge_base["editoplit"]["jokes"]
         self.chat_info = self.knowledge_base["editoplit"]["chat-info"]
         self.jcount = 0
+        self.emotion = "neutral"
     def learn(self, topic, information):
         self.knowledge_base[topic] = information
     def recall(self, topic):
@@ -48,15 +49,15 @@ class AI:
                 print(f"{self.emotion}: {self.emotions[self.emotion]}")
         elif "bye" in u or "goodbye" in u:
             print("Goodbye! Have a great day!")
-        elif u in chat_info.keys():
-            print(chat_info[u])
+        elif u in self.chat_info.keys():
+            print(self.chat_info[u])
         else:
             print("I'm not sure how to respond to that. Can you tell me how?")
-            chat_info[u] = input()
+            self.chat_info[u] = input()
             print("Thanks!")
 
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
-print(f"Hello! I am {ai.name}, your personal emotianal AI!")
+print(f"Hello! I am {ai.name}, your personal emotional AI!")
 while True:
     ai.chat(input())
