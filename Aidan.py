@@ -1,4 +1,4 @@
-import random, data
+import random, data, EI, cm
 
 class AI:
     def __init__(self, name):
@@ -39,3 +39,5 @@ class AI:
                 else:
                     joke = random.choice(self.jokes)
                     if joke[0] = "Knock Knock.":
+ai = AI("Aidan")
+cm.copy_instance_data(EI.ei, ai)
