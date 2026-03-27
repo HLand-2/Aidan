@@ -44,13 +44,16 @@ class AI:
                         print(joke[2])
                         input(joke[2] + " who?\n")
                         print(joke[3])
-        elif "how" in u and ("feel" in u or "emotion" in u):
-            for emotion, response in self.emotions.items():
-                print(f"  {emotion}: {response}")
+        elif ("how" in u or "what" in u) and ("feel" in u or "emotion" in u):
+                print(f"{self.emotion}: {self.emotions[self.emotion]}")
         elif "bye" in u or "goodbye" in u:
             print("Goodbye! Have a great day!")
+        elif u in chat_info.keys():
+            print(chat_info[u])
         else:
-            print("I'm not sure how to respond to that. Can you try again?")
+            print("I'm not sure how to respond to that. Can you tell me how?")
+            chat_info[u] = input()
+            print("Thanks!")
 
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
