@@ -54,5 +54,6 @@ class AI:
 
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
+print(f"Hello! I am {ai.name}, your personal emotianal AI!")
 while True:
     ai.chat(input())
