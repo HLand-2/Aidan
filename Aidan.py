@@ -23,8 +23,6 @@ class AI:
         self.emotion = EI.ei.analyze_emotion(user_input)
 
     def chat(self, user_input: str = "hello"):
-        # Update emotion based on user input
-        self.update_emotion(user_input)
         # Simple response generation based on keywords
         u = user_input.lower()
         if "hello" in u or "hi" in u:
@@ -72,6 +70,9 @@ class AI:
             print("I'm not sure how to respond to that. Can you tell me how?")
             self.chat_info[u] = input()
             print("Thanks! I'll remember that.")
+        # Update emotion after responding (skip emotion queries so the state isn't lost)
+        if not (("how" in u or "what" in u) and ("feel" in u or "emotion" in u)):
+            self.update_emotion(user_input)
 
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
