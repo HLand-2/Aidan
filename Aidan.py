@@ -54,3 +54,5 @@ class AI:
 
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
+while True:
+    ai.chat(input())
