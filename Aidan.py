@@ -18,13 +18,29 @@ class AI:
         self.knowledge_base[topic] = information
     def recall(self, topic):
         return self.knowledge_base.get(topic, "I don't know about that.")
+    def update_emotion(self, user_input):
+        """Update the AI's emotion based on the user's input."""
+        self.emotion = EI.ei.analyze_emotion(user_input)
+
     def chat(self, user_input: str = "hello"):
+        # Update emotion based on user input
+        self.update_emotion(user_input)
         # Simple response generation based on keywords
         u = user_input.lower()
         if "hello" in u or "hi" in u:
             print("Hello! How can I assist you today?")
         elif "help" in u:
             print("Sure! What do you need help with?")
+        elif "name" in u and ("your" in u or "who" in u):
+            print(f"My name is {self.name}!")
+        elif "learn" in u or "remember" in u or "teach" in u:
+            topic = input("What topic should I learn about?\n")
+            info = input(f"Tell me about {topic}:\n")
+            self.learn(topic, info)
+            print(f"Got it! I've learned about {topic}.")
+        elif "recall" in u or "what do you know" in u:
+            topic = input("What topic do you want me to recall?\n")
+            print(self.recall(topic))
         elif "joke" in u:
             if "i" in u:
                 j1 = input("Tell it to me.\n").lower()
@@ -46,15 +62,16 @@ class AI:
                         input(joke[2] + " who?\n")
                         print(joke[3])
         elif ("how" in u or "what" in u) and ("feel" in u or "emotion" in u):
-                print(f"{self.emotion}: {self.emotions[self.emotion]}")
+                print(f"{self.emotion}: {EI.ei.express_emotion(self.emotion)}")
         elif "bye" in u or "goodbye" in u:
             print("Goodbye! Have a great day!")
+            exit()
         elif u in self.chat_info.keys():
             print(self.chat_info[u])
         else:
             print("I'm not sure how to respond to that. Can you tell me how?")
             self.chat_info[u] = input()
-            print("Thanks!")
+            print("Thanks! I'll remember that.")
 
 ai = AI("Aidan")
 cm.copy_instance_data(EI.ei, ai)
