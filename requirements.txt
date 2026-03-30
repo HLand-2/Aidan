@@ -7,3 +7,5 @@ nltk
 matplotlib
 tabulate
 psutil
+opencv-python-headless
+pillow
