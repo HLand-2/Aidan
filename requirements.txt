@@ -12,3 +12,4 @@ pillow
 scipy
 wordcloud
 requests
+SpeechRecognition
