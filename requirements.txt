@@ -9,3 +9,6 @@ tabulate
 psutil
 opencv-python-headless
 pillow
+scipy
+wordcloud
+requests
