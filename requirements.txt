@@ -1,0 +1,9 @@
+streamlit
+pandas
+plotly
+gTTS
+textblob
+nltk
+matplotlib
+tabulate
+psutil
